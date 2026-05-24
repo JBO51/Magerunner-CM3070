@@ -1,0 +1,63 @@
+using UnityEngine;
+using UnityEngine.InputSystem; //Modern input hardware
+
+public class MouseLook : MonoBehaviour
+{
+    //Label in the unity inspector to easily change sensitivity of mouse in camera movement
+    //Slider for sensitivity is between 0.5f and 10f, set at 2f default
+    [Header("Look Configurations")]
+    [Range(0.5f, 10f)] public float mouseSensitivity = 3.5f;
+
+    //Attach player to camera since its not a child
+    [Header("Tracking Target")]
+    public Transform playerBody; 
+    public Vector3 headOffset = new Vector3(0f, 0.8f, 0f);
+
+    //Current look angle (pitch)
+    private float xRotation = 0f;
+    private float yRotation = 0f;
+
+    //Internal multiplier to scale down sensitivity value
+    private const float InputScaleFactor = 0.01f;
+
+    void Start()
+    {
+        //Lock hardware cursor to the center of viewport window so
+        //user cannot click outside of the window, and hide cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        //Initialize rotation variables to match current scene setup
+        xRotation = transform.localEulerAngles.x;
+        yRotation = playerBody.eulerAngles.y;
+    }
+
+    //process mouse rotation every rendered frame
+    void Update()
+    {
+        //Poll mouse delta so we know the rotation, and multiply by mouse sensitivity
+        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+        float mouseX = mouseDelta.x * mouseSensitivity * InputScaleFactor;
+        float mouseY = mouseDelta.y * mouseSensitivity * InputScaleFactor;
+
+        //Rotating around X-axis = tilting camera up and down
+        //Subtract xRotation by mouseY because moving the cam up returns a positive num
+        //and looking up needs a negative x rotation (and vice versa)
+        xRotation -= mouseY;
+        //Clamp rotation between 90 and -90 degrees so player cant flip camera
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        yRotation += mouseX;
+
+        //Apply clamped rotation, convert degrees into unity math with Quaternion 
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+    }
+
+    //Lateupdate to change actual player orientation so there is no choppiness in rendering
+    void LateUpdate()
+    {
+        if (playerBody != null)
+        {
+            transform.position = playerBody.position + headOffset;
+        }
+    }
+}
