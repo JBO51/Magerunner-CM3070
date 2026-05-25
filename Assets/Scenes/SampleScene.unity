@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 619946080}
   - component: {fileID: 619946079}
   - component: {fileID: 619946078}
+  - component: {fileID: 619946081}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -736,6 +737,26 @@ Transform:
   - {fileID: 1899498371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619946081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619946077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f65790c64eabf549a5f67a4199a32cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  movementSpeed: 8
+  jumpForce: 6
+  groundCheck: {fileID: 1899498371}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  cameraTransform: {fileID: 330585546}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
