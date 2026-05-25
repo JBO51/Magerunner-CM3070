@@ -12,6 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 8f;
     public float jumpForce = 6f;
 
+    //Acceleration and deceleration so movement feels normal
+    [Tooltip("Player acceleration")]
+    public float acceleration = 40f;
+    [Tooltip("Player deceleration")]
+    public float deceleration = 50f;
+
     //Ground verification needed for interacting with the floor
     [Header("Ground Verification")]
     //groundCheck will be an empty gameobject on the players feet to act as center point
@@ -34,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    //check for button presses in Update because Update runs every single frame
+    //check for space button presses in Update because Update runs every single frame
     void Update()
     {
         //1. GROUND VALIDATION
@@ -46,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         //Poll for button presses, checking all conditions are met (grounded, pressed space)
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
-            //Apply jump *force* to the y axis without changing x and z movement
+            //Apply jump force to the y axis without changing x and z movement
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
         }
     }
@@ -79,12 +85,33 @@ public class PlayerMovement : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
+        //Calculate vector direction and the velocity from values
         Vector3 moveDirection = (right * x + forward * z).normalized;
         Vector3 targetVelocity = moveDirection * movementSpeed;
 
-        //5. APPLY VELOCITY
-        //Overwrite X and Z velocity for better movement handling (avoid clunky controls)
-        //Leave y velocity alone for gravity
-        rb.linearVelocity = new Vector3(targetVelocity.x, rb.linearVelocity.y, targetVelocity.z);
+        //5. MOMENTUM ACCELEARATION
+        //Separate horizontal velocity so gravity isnt changed
+        Vector3 currentHorizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+        //check if actively accelerating or letting go of the keys to stop
+        float speedChangeRate;
+        if (moveDirection.magnitude > 0f)
+        {
+            speedChangeRate = acceleration;
+        }
+        else
+        {
+            speedChangeRate = deceleration;
+        }
+
+        //step current velocity toward the target velocity over time for smoother movement
+        Vector3 smoothedHorizontalVelocity = Vector3.MoveTowards(
+            currentHorizontalVelocity,
+            targetVelocity,
+            speedChangeRate * Time.fixedDeltaTime
+        );
+
+        //Overwrite X and Z velocity, Leave y velocity alone for gravity
+        rb.linearVelocity = new Vector3(smoothedHorizontalVelocity.x, rb.linearVelocity.y, smoothedHorizontalVelocity.z);
     }
 }
