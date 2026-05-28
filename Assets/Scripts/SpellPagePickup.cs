@@ -38,7 +38,7 @@ public class SpellPagePickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Verify if the player is touching the object
-        //can do so by checking if object touching the pickup has inventory system
+        //can do it by checking if object touching the pickup has inventory system
         if (other.TryGetComponent<PlayerSpellInventory>(out PlayerSpellInventory playerInventory))
         {
             //Transfer the spell to the player with PlayerSpellInventory.cs function

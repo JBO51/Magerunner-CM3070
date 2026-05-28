@@ -5,6 +5,7 @@ using UnityEngine;
 //Not using numbers for spells sincce it can be confusing
 public enum SpellType
 {
+    None,
     RedPush,
     BluePull,
     GreenStasis
