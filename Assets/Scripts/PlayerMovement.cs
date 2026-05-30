@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded;
+    private bool isJumping = false;
+    private Vector2 moveInput;
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //check for space button presses in Update because Update runs every single frame
+    //cant do physics calculations here, do it in fixedUpdate
     void Update()
     {
         //1. GROUND VALIDATION
@@ -49,32 +52,38 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //2. JUMP DETECTION
-        //Poll for button presses, checking all conditions are met (grounded, pressed space)
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             //Apply jump force to the y axis without changing x and z movement
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            isJumping = true;
         }
+
+        //3. WASD MOVEMENT
+        //variables for x and z movement
+        float x = 0f;
+        float z = 0f;
+
+        //if statements to see wasd input
+        if (Keyboard.current.wKey.isPressed) z = 1f;
+        if (Keyboard.current.sKey.isPressed) z = -1f;
+        if (Keyboard.current.dKey.isPressed) x = 1f;
+        if (Keyboard.current.aKey.isPressed) x = -1f;
+        //Store input into Vector2 for fixedUpdate
+        moveInput = new Vector2(x, z);
     }
 
     //process constant force applications, velocity changes, or physics calculations
     //in FixedUpdate because it runs multiple times on fixed timer (e.g. 50 per second)
     void FixedUpdate()
     {
+        //Apply Jump Force if is jumping is true from update()
+        
+        if (isJumping) {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            isJumping = false;
+        }
 
-        //3. MOVEMENT INPUT
-        //Continuous holding of keys is safe to poll in FixedUpdate over Update
-        //variables for x and z movement
-        float x = 0f;
-        float z = 0f;
-
-        //Basic if statements to see basic input
-        if (Keyboard.current.wKey.isPressed) z = 1f;
-        if (Keyboard.current.sKey.isPressed) z = -1f;
-        if (Keyboard.current.dKey.isPressed) x = 1f;
-        if (Keyboard.current.aKey.isPressed) x = -1f;
-
-        //4. CALCULATE DIRECTION 
+        //CALCULATE DIRECTION 
         //Grab camera directional vector and flatten y axis to 0
         //Looking up or down wont slow movement
         //Also normalise so diagonal movement isnt faster
@@ -86,10 +95,10 @@ public class PlayerMovement : MonoBehaviour
         right.Normalize();
 
         //Calculate vector direction and the velocity from values
-        Vector3 moveDirection = (right * x + forward * z).normalized;
+        Vector3 moveDirection = (right * moveInput.x + forward * moveInput.y).normalized;
         Vector3 targetVelocity = moveDirection * movementSpeed;
 
-        //5. MOMENTUM ACCELEARATION
+        //MOMENTUM ACCELEARATION
         //Separate horizontal velocity so gravity isnt changed
         Vector3 currentHorizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 

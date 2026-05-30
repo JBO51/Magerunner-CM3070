@@ -90,4 +90,31 @@ public class PlayerSpellInventory : MonoBehaviour
         //Notify UI to refresh visuals
         OnSpellChanged?.Invoke();
     }
+
+    //Remove the currently equipped spell page from the list for spellcasting
+    public void ConsumeEquippedSpell()
+    {
+        //Validate that inventory is not empty
+        if (collectedSpells.Count == 0 && currentSpellIndex == -1) return;
+
+        //Remove the spell from list
+        collectedSpells.RemoveAt(currentSpellIndex);
+
+        //reconnect index pointer now that size changed
+        if (collectedSpells.Count == 0)
+        {
+            currentSpellIndex = -1; //Inventory is empty
+        }
+        else
+        {
+            //Step back by 1 to stay in boundary
+            if (currentSpellIndex >= collectedSpells.Count)
+            {
+                currentSpellIndex = collectedSpells.Count - 1;
+            }
+        }
+
+        //Invoke UI to update ui color
+        OnSpellChanged?.Invoke();
+    }
 }

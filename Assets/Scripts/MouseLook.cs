@@ -50,14 +50,6 @@ public class MouseLook : MonoBehaviour
 
         //Apply clamped rotation, convert degrees into unity math with Quaternion 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-    }
-
-    //Lateupdate to change actual player orientation so there is no choppiness in rendering
-    void LateUpdate()
-    {
-        if (playerBody != null)
-        {
-            transform.position = playerBody.position + headOffset;
-        }
+        transform.position = playerBody.position + headOffset;
     }
 }

@@ -3,8 +3,7 @@ using UnityEngine;
 //Manage picking up a spell and the appearance of a spell in game
 public class SpellPagePickup : MonoBehaviour
 {
-    [Header("Pickup Configurations")]
-    [Tooltip("Spell Type")]
+    [Header("Spell Type")]
     //Using spell enumeration from SpellTypes, dropdown menu for which spell
     public SpellType spellToGrant;
 
