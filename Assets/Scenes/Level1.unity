@@ -739,8 +739,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.64624, y: 0, z: -3.27215}
-  m_LocalScale: {x: 50.17, y: 10.033999, z: 50.17}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 50.17, y: 51.6, z: 50.17}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1019,9 +1019,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpellCaster
   playerCamera: {fileID: 330585545}
-  castRange: 22
+  pushRange: 25
   pushForce: 50
   pushRadius: 1.74
+  pullRange: 25
+  pullForce: 50
+  pullRadius: 1.5
+  stasisRange: 25
+  stasisRadius: 1.5
 --- !u!1 &754683691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1368,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005058118}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2.9
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1632,7 +1637,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170983510}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2.9
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1912,7 +1917,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574440504}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2.9
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2320,7 +2325,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126347211}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 2.9
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
