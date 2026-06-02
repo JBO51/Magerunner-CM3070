@@ -80,6 +80,12 @@ public class PlayerSpellCasting : MonoBehaviour
             //Check if object has a rigidbody component
             if (hit.collider.TryGetComponent<Rigidbody>(out Rigidbody targetRb))
             {
+                //check if isKinematic (for objects that can only be moved by spells)
+                if (targetRb.isKinematic)
+                {
+                    targetRb.isKinematic = false;
+                }
+
                 //Add push based on ray direction, and force variables
                 Vector3 pushDirection = ray.direction;
                 Vector3 forceVector = pushDirection * pushForce;
@@ -118,6 +124,12 @@ public class PlayerSpellCasting : MonoBehaviour
             //Check if object has a rigidbody component
             if (hit.collider.TryGetComponent<Rigidbody>(out Rigidbody targetRb))
             {
+                //check if isKinematic (for objects that can only be moved by spells)
+                if (targetRb.isKinematic)
+                {
+                    targetRb.isKinematic = false;
+                }
+
                 //Multiply ray direction negative to point vector towrds the view line
                 Vector3 pullDirection = -ray.direction;
                 Vector3 forceVector = pullDirection * pullForce;
