@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Adjustments")]
     public float movementSpeed = 8f;
     public float jumpForce = 6f;
+    public float fallMultiplier = 2.5f;
 
     //Acceleration and deceleration so movement feels normal
     [Tooltip("Player acceleration")]
@@ -81,6 +82,13 @@ public class PlayerMovement : MonoBehaviour
         if (isJumping) {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
             isJumping = false;
+        }
+
+        //If player's Y velocity is less than 0, they passed the peak of their jump and are falling.
+        if (rb.linearVelocity.y < 0)
+        {
+            //Apply downward force to fall to the ground faster
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
 
         //CALCULATE DIRECTION 
