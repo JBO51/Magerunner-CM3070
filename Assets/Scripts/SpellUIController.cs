@@ -3,13 +3,15 @@
 //Later will be a proper mage book asset
 
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using TMPro; 
 
 public class SpellUIController : MonoBehaviour
 {
-    //UI image component
+    //UI image component + text
     [Header("UI Graphic Target")]
-    public Image cardDisplayImage; 
+    public Image cardDisplayImage;
+    public TextMeshProUGUI cardNameText;
 
     //Colors for diff spells
     [Header("Card Color Palettes")]
@@ -63,16 +65,20 @@ public class SpellUIController : MonoBehaviour
         {
             case SpellType.RedPush:
                 cardDisplayImage.color = redPushColor;
+                cardNameText.text = "PUSH";
                 break;
             case SpellType.BluePull:
                 cardDisplayImage.color = bluePullColor;
+                cardNameText.text = "PULL";
                 break;
             case SpellType.GreenStasis:
                 cardDisplayImage.color = greenStasisColor;
+                cardNameText.text = "FREEZE";
                 break;
             case SpellType.None:
             default:
                 cardDisplayImage.color = emptySlotColor;
+                cardNameText.text = "";
                 break;
         }
     }
