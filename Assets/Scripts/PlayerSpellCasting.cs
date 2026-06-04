@@ -103,7 +103,7 @@ public class PlayerSpellCasting : MonoBehaviour
         }
 
         //Remove spell from inventory
-        //inventory.ConsumeEquippedSpell();
+        inventory.ConsumeEquippedSpell();
     }
 
     private void BluePull()
@@ -147,7 +147,7 @@ public class PlayerSpellCasting : MonoBehaviour
         }
 
         //Remove spell from inventory
-        //inventory.ConsumeEquippedSpell();
+        inventory.ConsumeEquippedSpell();
     }
     private void GreenStasis()
     {
@@ -171,6 +171,6 @@ public class PlayerSpellCasting : MonoBehaviour
         }
 
         //Remove spell from inventory
-        //inventory.ConsumeEquippedSpell();
+        inventory.ConsumeEquippedSpell();
     }
 }

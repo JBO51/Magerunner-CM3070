@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class ResetPlayer : MonoBehaviour
 {
+    [Header("Lava Reference")]
+    [SerializeField] private Collider lavaCollider;
+
     void Update()
     {
         //Check for the 'T' key press
@@ -14,9 +17,9 @@ public class ResetPlayer : MonoBehaviour
     }
 
     //Check if player has collision with Lava
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider obj)
     {
-        if (collision.gameObject.name == "Lava")
+        if (obj == lavaCollider)
         {
             ResetLevel();
         }

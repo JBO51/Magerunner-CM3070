@@ -34,11 +34,12 @@ public class SpellPagePickup : MonoBehaviour
     }
 
     //Ontrigger collision function for when player actually collides with spell
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider obj)
     {
+        //Dont need to check what the collider is here since this is a monobehaviour script
         //Verify if the player is touching the object
         //can do it by checking if object touching the pickup has inventory system
-        if (other.TryGetComponent<PlayerSpellInventory>(out PlayerSpellInventory playerInventory))
+        if (obj.TryGetComponent<PlayerSpellInventory>(out PlayerSpellInventory playerInventory))
         {
             //Transfer the spell to the player with PlayerSpellInventory.cs function
             playerInventory.AddSpell(spellToGrant);
