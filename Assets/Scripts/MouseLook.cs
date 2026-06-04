@@ -7,6 +7,7 @@ public class MouseLook : MonoBehaviour
     //Slider for sensitivity is between 0.5f and 10f, set at 2f default
     [Header("Look Configurations")]
     [Range(0.5f, 10f)] public float mouseSensitivity = 3.5f;
+    [Range(60f, 110f)] public float targetFOV = 90f;
 
     //Attach player to camera since its not a child
     [Header("Tracking Target")]
