@@ -1,4 +1,4 @@
-//Script for changing objects physics with stasis spell
+//Injector script for changing objects physics behaviour with stasis spell
 
 using UnityEngine;
 using System.Collections;

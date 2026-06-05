@@ -1,11 +1,15 @@
+//Script for resetting the player on environmental hazard collision, 
+//or when player presses T
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class ResetPlayer : MonoBehaviour
 {
-    [Header("Lava Reference")]
-    [SerializeField] private Collider lavaCollider;
+    [Header("Hazard Reference")]
+    [SerializeField] private Collider hazardCollider1;
+    [SerializeField] private Collider hazardCollider2;
+    [SerializeField] private Collider hazardCollider3;
 
     void Update()
     {
@@ -19,7 +23,7 @@ public class ResetPlayer : MonoBehaviour
     //Check if player has collision with Lava
     private void OnTriggerEnter(Collider obj)
     {
-        if (obj == lavaCollider)
+        if (obj == (hazardCollider1 || hazardCollider2 || hazardCollider3))
         {
             ResetLevel();
         }

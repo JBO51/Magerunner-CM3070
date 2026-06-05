@@ -1,3 +1,4 @@
+//Script for the timer at the top of the hud
 using UnityEngine;
 using TMPro;
 
@@ -8,12 +9,6 @@ public class LevelTimer : MonoBehaviour
 
     private float elapsedTime = 0f;
     private bool isTimerRunning = false;
-
-    void Start()
-    {
-        //Start clock when the level loads
-        StartTimer();
-    }
 
     void Update()
     {

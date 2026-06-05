@@ -1,3 +1,4 @@
+//Script for Jump Pads
 using UnityEngine;
 
 public class JumpPad : MonoBehaviour

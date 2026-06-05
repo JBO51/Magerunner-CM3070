@@ -1,3 +1,5 @@
+//Script for spinning blocks
+//Used in Level 1
 using UnityEngine;
 
 public class SpinningBlock : MonoBehaviour

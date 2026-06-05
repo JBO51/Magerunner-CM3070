@@ -1,3 +1,4 @@
+//Script for the finish point functionality in levels
 using UnityEngine;
 
 public class FinishPoint : MonoBehaviour

@@ -12,6 +12,9 @@ public class SpellUIController : MonoBehaviour
     [Header("UI Graphic Target")]
     public Image cardDisplayImage;
     public TextMeshProUGUI cardNameText;
+    public TextMeshProUGUI clickHintText;
+    public TextMeshProUGUI cyclePromptText;
+
 
     //Colors for diff spells
     [Header("Card Color Palettes")]
@@ -22,6 +25,7 @@ public class SpellUIController : MonoBehaviour
 
     //Create private version of playerinventory
     private PlayerSpellInventory playerInventory;
+    private string clickHint = "Left Click to Cast";
 
     void Start()
     {
@@ -66,20 +70,33 @@ public class SpellUIController : MonoBehaviour
             case SpellType.RedPush:
                 cardDisplayImage.color = redPushColor;
                 cardNameText.text = "PUSH";
+                clickHintText.text = clickHint;
                 break;
             case SpellType.BluePull:
                 cardDisplayImage.color = bluePullColor;
                 cardNameText.text = "PULL";
+                clickHintText.text = clickHint;
                 break;
             case SpellType.GreenStasis:
                 cardDisplayImage.color = greenStasisColor;
                 cardNameText.text = "FREEZE";
+                clickHintText.text = clickHint;
                 break;
             case SpellType.None:
             default:
                 cardDisplayImage.color = emptySlotColor;
                 cardNameText.text = "";
+                clickHintText.text = "";
                 break;
+        }
+        //Conditional for adding Q+E control hint
+        if (playerInventory != null && playerInventory.collectedSpells.Count > 1)
+        {
+            cyclePromptText.text = "<-Q                 E->";
+        }
+        else
+        {
+            cyclePromptText.text = "";
         }
     }
 }
