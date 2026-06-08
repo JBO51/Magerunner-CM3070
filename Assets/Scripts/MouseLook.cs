@@ -1,3 +1,4 @@
+//Adapted from guide: https://www.youtube.com/watch?v=f473C43s8nE
 using UnityEngine;
 using UnityEngine.InputSystem; //Modern input hardware
 
@@ -7,7 +8,7 @@ public class MouseLook : MonoBehaviour
     //Slider for sensitivity is between 0.5f and 10f, set at 2f default
     [Header("Look Configurations")]
     [Range(0.5f, 10f)] public float mouseSensitivity = 3.5f;
-    [Range(60f, 110f)] public float targetFOV = 90f;
+    [Range(60f, 110f)] public float targetFOV = 100f;
 
     //Attach player to camera since its not a child
     [Header("Tracking Target")]
@@ -23,14 +24,18 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
-        //Lock hardware cursor to the center of viewport window so
-        //user cannot click outside of the window, and hide cursor
+        //Cursor focused onto screen so user cannot click outside of the window
         Cursor.lockState = CursorLockMode.Locked;
+        //hide cursor
         Cursor.visible = false;
 
         //Initialize rotation variables to match current scene setup
         xRotation = transform.localEulerAngles.x;
         yRotation = playerBody.eulerAngles.y;
+
+        //Apply FOV
+        Camera cam = GetComponent<Camera>();
+        cam.fieldOfView = targetFOV;
     }
 
     //process mouse rotation every rendered frame

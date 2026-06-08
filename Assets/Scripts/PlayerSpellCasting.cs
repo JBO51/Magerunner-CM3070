@@ -94,7 +94,7 @@ public class PlayerSpellCasting : MonoBehaviour
                 Vector3 forceVector = pushDirection * pushForce;
 
                 //If the object is in stasis, add to cumulative force
-                if (hit.collider.TryGetComponent<StasisHandler>(out StasisHandler stasis))
+                if (hit.collider.TryGetComponent<StasisObject>(out StasisObject stasis))
                 {
                     stasis.AddStoredForce(forceVector);
                 }
@@ -137,8 +137,8 @@ public class PlayerSpellCasting : MonoBehaviour
                 Vector3 pullDirection = -ray.direction;
                 Vector3 forceVector = pullDirection * pullForce;
 
-
-                if (hit.collider.TryGetComponent<StasisHandler>(out StasisHandler stasis))
+                //If object is frozen in stasis, add to cumulative force
+                if (hit.collider.TryGetComponent<StasisObject>(out StasisObject stasis))
                 {
                     stasis.AddStoredForce(forceVector);
                 }
@@ -166,9 +166,11 @@ public class PlayerSpellCasting : MonoBehaviour
             if (hit.collider.TryGetComponent<Rigidbody>(out Rigidbody targetRb))
             {
                 //Attach the stasis logic script on hit for complex stasis stuff
-                if (!hit.collider.gameObject.TryGetComponent<StasisHandler>(out StasisHandler existingHandler))
+                //Make sure it doesnt already have a stasis on it (in case 
+                //levels later have more stasis spells)
+                if (!hit.collider.gameObject.TryGetComponent<StasisObject>(out StasisObject existingHandler))
                 {
-                    hit.collider.gameObject.AddComponent<StasisHandler>();
+                    hit.collider.gameObject.AddComponent<StasisObject>();
                 }
             }
         }

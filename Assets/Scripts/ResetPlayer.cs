@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ResetPlayer : MonoBehaviour
 {
+    //Hazard colliders to be used for lvl 2
     [Header("Hazard Reference")]
     [SerializeField] private Collider hazardCollider1;
     [SerializeField] private Collider hazardCollider2;
@@ -20,10 +21,10 @@ public class ResetPlayer : MonoBehaviour
         }
     }
 
-    //Check if player has collision with Lava
+    //Check if player has collision with collider
     private void OnTriggerEnter(Collider obj)
     {
-        if (obj == (hazardCollider1 || hazardCollider2 || hazardCollider3))
+        if (obj == hazardCollider1 || obj == hazardCollider2 || obj == hazardCollider3)
         {
             ResetLevel();
         }

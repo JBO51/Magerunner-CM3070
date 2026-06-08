@@ -36,12 +36,10 @@ public class LevelIntroPan : MonoBehaviour
             SnapToPlayer();
             return;
         }
-
         //If not, play intro
-        if (introStartPoint != null && playerCameraHolder != null)
-        {
-            StartCoroutine(PlayIntroPanRoutine());
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        StartCoroutine(PlayIntroPanRoutine());
     }
 
     private IEnumerator PlayIntroPanRoutine()
@@ -105,14 +103,17 @@ public class LevelIntroPan : MonoBehaviour
         transform.localRotation = Quaternion.identity;
 
         //Re-enable controls
-        if (playerMovement != null) playerMovement.enabled = true;
-        if (mouseLook != null) mouseLook.enabled = true;
+        playerMovement.enabled = true;
+        mouseLook.enabled = true;
 
         //Start timer   
         LevelTimer timer = Object.FindFirstObjectByType<LevelTimer>();
-        if (timer != null)
-        {
-            timer.StartTimer();
-        }
+        timer.StartTimer();
+    }
+
+    //For resetting the intro play when you leave to main menu
+    public static void ResetIntro()
+    {
+        hasPlayedIntro = false;
     }
 }

@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem; //Modern input hardware
+using UnityEngine.InputSystem;
 //This script is a rigidbody based movement mechanism, to support realistic physics simulation
 //Non-kinematic system, unlike Neon White
 
-//Forces rigidbody component to gameobject to avoid crashing
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     //Basic movement adjustments like movement speed and jump force
@@ -39,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        //Get rigidibody so unity doesnt have to look every frame
+        //Hook to rigidbody of player
         rb = GetComponent<Rigidbody>();
     }
 
@@ -53,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         //2. JUMP DETECTION
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             //Apply jump force to the y axis without changing x and z movement
             isJumping = true;
@@ -84,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
         }
 
+        //Add more falling velocity
         //If player's Y velocity is less than 0, they passed the peak of their jump and are falling.
         if (rb.linearVelocity.y < 0)
         {
@@ -121,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             speedChangeRate = deceleration;
         }
 
-        //step current velocity toward the target velocity over time for smoother movement
+        //step current velocity toward the target velocity over time to make movement smoother 
         Vector3 smoothedHorizontalVelocity = Vector3.MoveTowards(
             currentHorizontalVelocity,
             targetVelocity,

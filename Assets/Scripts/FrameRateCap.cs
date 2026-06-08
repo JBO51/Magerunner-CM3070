@@ -1,3 +1,4 @@
+//Small script for capping fps
 using UnityEngine;
 
 public class FrameRateCap : MonoBehaviour

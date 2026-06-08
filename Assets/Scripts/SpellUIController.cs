@@ -1,4 +1,4 @@
-//Listener script for hooking into the playerinventory System.Action broadcast.
+﻿//Listener script for hooking into the playerinventory System.Action broadcast.
 //For now just changes UI image box color to match spell type
 //Later will be a proper mage book asset
 
@@ -13,7 +13,8 @@ public class SpellUIController : MonoBehaviour
     public Image cardDisplayImage;
     public TextMeshProUGUI cardNameText;
     public TextMeshProUGUI clickHintText;
-    public TextMeshProUGUI cyclePromptText;
+    public TextMeshProUGUI cyclePromptTextQ;
+    public TextMeshProUGUI cyclePromptTextE;
 
 
     //Colors for diff spells
@@ -29,14 +30,10 @@ public class SpellUIController : MonoBehaviour
 
     void Start()
     {
-        //Find the player inventory component in scene execution
+        //Find the player inventory component in scene execution and bind to
+        //the private playerInventory
         playerInventory = Object.FindFirstObjectByType<PlayerSpellInventory>();
-
-        if (playerInventory != null)
-        {
-            //Connecct UpdateUI method to the inventory event notification list
-            playerInventory.OnSpellChanged += UpdateUI;
-        }
+        playerInventory.OnSpellChanged += UpdateUI;
 
         //Execute initially to style the card as empty startup
         UpdateUI();
@@ -45,31 +42,23 @@ public class SpellUIController : MonoBehaviour
     void OnDestroy()
     {
         //cleanup event links when scenes change to prevent errors
-        if (playerInventory != null)
-        {
-            playerInventory.OnSpellChanged -= UpdateUI;
-        }
+        playerInventory.OnSpellChanged -= UpdateUI;
     }
 
     private void UpdateUI()
     {
-        if (cardDisplayImage == null) return;
+        //If there is a spell, change it to the equipped spell
+        SpellType activeSpell = playerInventory.EquippedSpell;
 
-        //Safety check to deafult to empty if player script is missing
-        //First set to none
-        SpellType activeSpell = SpellType.None; 
-        //And if there is a spell, change it to the equipped spell
-        if (playerInventory != null)
-        {
-            activeSpell = playerInventory.EquippedSpell;
-        }
-
-        //Switch color properties of card UI based on active Enum flag
+        //Switch properties of card UI based on active Enum flag
         switch (activeSpell)
         {
             case SpellType.RedPush:
+                //Change the color of the card
                 cardDisplayImage.color = redPushColor;
+                //Change the text on the card
                 cardNameText.text = "PUSH";
+                //Add the click to cast hint at the top
                 clickHintText.text = clickHint;
                 break;
             case SpellType.BluePull:
@@ -89,14 +78,40 @@ public class SpellUIController : MonoBehaviour
                 clickHintText.text = "";
                 break;
         }
-        //Conditional for adding Q+E control hint
-        if (playerInventory != null && playerInventory.collectedSpells.Count > 1)
+        //Bounding code for cycle button hints
+        //First check if player has more than 1 spell (cant cycle otherwise)
+        if (playerInventory.collectedSpells.Count > 1)
         {
-            cyclePromptText.text = "<-Q                 E->";
+            //Initialise booleans can go left/right to determine q/e hints
+            //Fetched from the public int in PlayerSpellInventory
+            bool canGoLeft = playerInventory.currentSpellIndex > 0;
+            bool canGoRight = playerInventory.currentSpellIndex < playerInventory.collectedSpells.Count - 1;
+
+            if (canGoLeft && canGoRight)
+            {
+                //Spells exist on both sides
+                cyclePromptTextQ.text = "←Q";
+                cyclePromptTextE.text = "E→";
+            }
+            else if (canGoLeft)
+            {
+                //At the end of the list
+                cyclePromptTextQ.text = "←Q";
+                cyclePromptTextE.text = "";
+            }
+            else if (canGoRight)
+            {
+                //At the front of the list. Can only cycle forwards.
+                cyclePromptTextQ.text = "";
+                cyclePromptTextE.text = "E→";
+            }
         }
+        //Else for if there are no spells or just 1 spell
         else
         {
-            cyclePromptText.text = "";
+            //No cycle prompt
+            cyclePromptTextQ.text = "";
+            cyclePromptTextE.text = "";
         }
     }
 }

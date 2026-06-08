@@ -6,7 +6,7 @@ public class FinishPoint : MonoBehaviour
     private void OnTriggerEnter(Collider obj)
     {
         //Check if player passed finish line
-        if (obj.CompareTag("Player") || obj.GetComponent<PlayerMovement>() != null)
+        if (obj.GetComponent<PlayerMovement>() != null)
         {
             //Stop timer
             LevelTimer timer = Object.FindFirstObjectByType<LevelTimer>();

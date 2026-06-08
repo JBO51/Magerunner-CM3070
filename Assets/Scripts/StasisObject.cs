@@ -3,7 +3,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class StasisHandler : MonoBehaviour
+public class StasisObject : MonoBehaviour
 {
     //Store the current rigidbody, the original constraints
     //and the accumulated force + duration of stasis
@@ -16,23 +16,19 @@ public class StasisHandler : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        //store original constraints to return it later
+        originalConstraints = rb.constraints;
 
-        if (rb != null)
-        {
-            //store original constraints to return it later
-            originalConstraints = rb.constraints;
+        //Freeze object velocity so it stops 
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
-            //Freeze object velocity so it stops 
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
+        //Freeze constraints so it freezes completely
+        rb.constraints = RigidbodyConstraints.FreezeAll;
 
-            //Freeze constraints so it freezes completely
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-
-            //StartCoroutine function to wait 3 seconds before
-            //applying accumulated forces and unfreezing
-            StartCoroutine(StasisTimer());
-        }
+        //StartCoroutine function to wait 3 seconds before
+        //applying accumulated forces and unfreezing
+        StartCoroutine(StasisTimer());
     }
 
     //Function to add force from spells while objecty is frozen
@@ -46,20 +42,17 @@ public class StasisHandler : MonoBehaviour
         //wait 3 seconds
         yield return new WaitForSeconds(stasisDuration);
 
-        if (rb != null)
-        {
-            //Restore original constraints
-            rb.constraints = originalConstraints;
+        //Restore original constraints
+        rb.constraints = originalConstraints;
 
-            //wake up the physics body so it registers the physics update
-            rb.WakeUp();
+        //wake up the physics body so it registers the physics update
+        rb.WakeUp();
 
-            //move object up a tiny bit in case of ground physics bugs 
-            transform.position += Vector3.up * 0.01f;
+        //move object up a tiny bit in case of ground physics bugs 
+        transform.position += Vector3.up * 0.01f;
 
-            //add all force vectors that were added during stasis all at once
-            rb.AddForce(accumulatedForces, ForceMode.Impulse);
-        }
+        //add all force vectors that were added during stasis all at once
+        rb.AddForce(accumulatedForces, ForceMode.Impulse);
 
         //Remove StasisObject script from the object so it goes back to normal
         Destroy(this);

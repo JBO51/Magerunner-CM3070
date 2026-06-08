@@ -11,7 +11,7 @@ public class JumpPad : MonoBehaviour
         //get rigidbody of whatever fell into trigger 
         Rigidbody rb = obj.attachedRigidbody;
 
-        //keep player's current X and Z speed, then overwrite Y velocity with launch force
+        //keep body's current X and Z speed, then overwrite Y velocity with launch force
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, launchForce, rb.linearVelocity.z);
     }
 }
