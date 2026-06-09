@@ -26,9 +26,7 @@ public class PauseMenuController : MonoBehaviour
         //Check for escape key input to pause game
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (isPaused)
-                ResumeGame();
-            else
+            if (!isPaused)
                 PauseGame();
         }
     }
@@ -63,10 +61,12 @@ public class PauseMenuController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //Re-enable controls
-        playerMovement.enabled = true;
-        mouseLook.enabled = true;
-        spellCastingScript.enabled = true;
+        if (!LevelIntroPan.IsIntroActive)
+        {
+            playerMovement.enabled = true;
+            mouseLook.enabled = true;
+            spellCastingScript.enabled = true;
+        }
     }
 
     public void ResetLevel()

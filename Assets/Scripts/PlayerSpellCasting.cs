@@ -158,7 +158,7 @@ public class PlayerSpellCasting : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, stasisRange))
+        if (Physics.SphereCast(ray, stasisRadius, out hit, stasisRange))
         {
             //ignore player
             if (hit.collider.transform.root == transform.root) return;

@@ -4,11 +4,9 @@ using UnityEngine.InputSystem; //Modern input hardware
 
 public class MouseLook : MonoBehaviour
 {
-    //Label in the unity inspector to easily change sensitivity of mouse in camera movement
-    //Slider for sensitivity is between 0.5f and 10f, set at 2f default
-    [Header("Look Configurations")]
-    [Range(0.5f, 10f)] public float mouseSensitivity = 3.5f;
-    [Range(60f, 110f)] public float targetFOV = 100f;
+    //Playerpreference values for SettingsManager
+    public float mouseSensitivity;
+    public float targetFOV;
 
     //Attach player to camera since its not a child
     [Header("Tracking Target")]
@@ -28,6 +26,10 @@ public class MouseLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //hide cursor
         Cursor.visible = false;
+
+        //Load saved player preference values for mouse sens and FOV
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 3.5f);
+        targetFOV = PlayerPrefs.GetFloat("TargetFOV", 100f);
 
         //Initialize rotation variables to match current scene setup
         xRotation = transform.localEulerAngles.x;

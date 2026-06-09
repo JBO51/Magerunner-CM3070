@@ -8,17 +8,22 @@ public class LevelIntroPan : MonoBehaviour
     //Static boolean for checking if the player has already seen the intro;
     //static so that scene reloading doesnt trigger it again
     private static bool hasPlayedIntro = false;
+    //Added active tracker for pause menu bugginess; allows us to
+    //activate/deactivate controls better
+    private static bool isIntroActive = false;
+    public static bool IsIntroActive => isIntroActive;
 
     [Header("References")]
     //Intro camera starting point
     public Transform introStartPoint;  
     //Player camera starting point
-    public Transform playerCameraHolder; 
+    public Transform playerCameraPosition; 
 
     [Header("Disable player controls")]
     //Disable the movement + mouselook scripts
     public MonoBehaviour playerMovement; 
-    public MonoBehaviour mouseLook;      
+    public MonoBehaviour mouseLook;
+    public PlayerSpellCasting spellCastingScript;
 
     [Header("Duration")]
     //How long the intro takes
@@ -37,6 +42,7 @@ public class LevelIntroPan : MonoBehaviour
             return;
         }
         //If not, play intro
+        isIntroActive = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         StartCoroutine(PlayIntroPanRoutine());
@@ -47,7 +53,8 @@ public class LevelIntroPan : MonoBehaviour
         //Lock the player out of movement and looking around during the pan
         playerMovement.enabled = false;
         mouseLook.enabled = false;
-        
+        spellCastingScript.enabled = false;
+
         //Put camera in starting position
         transform.position = introStartPoint.position;
         transform.rotation = introStartPoint.rotation;
@@ -82,8 +89,8 @@ public class LevelIntroPan : MonoBehaviour
 
             //Slerp = spherical linear inerpolation, moves between two points along
             //a sphere for smooth rotation. Normal Lerp for position itself
-            transform.position = Vector3.Lerp(driftedStartPos, playerCameraHolder.position, tPan);
-            transform.rotation = Quaternion.Slerp(introStartPoint.rotation, playerCameraHolder.rotation, tPan);
+            transform.position = Vector3.Lerp(driftedStartPos, playerCameraPosition.position, tPan);
+            transform.rotation = Quaternion.Slerp(introStartPoint.rotation, playerCameraPosition.rotation, tPan);
 
             yield return null;
         }
@@ -97,14 +104,17 @@ public class LevelIntroPan : MonoBehaviour
 
     private void SnapToPlayer()
     {
+        isIntroActive = false;
+
         //Lock the camera back into the player
-        transform.SetParent(playerCameraHolder);
+        transform.SetParent(playerCameraPosition);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
 
         //Re-enable controls
         playerMovement.enabled = true;
         mouseLook.enabled = true;
+        spellCastingScript.enabled = true;
 
         //Start timer   
         LevelTimer timer = Object.FindFirstObjectByType<LevelTimer>();
@@ -115,5 +125,6 @@ public class LevelIntroPan : MonoBehaviour
     public static void ResetIntro()
     {
         hasPlayedIntro = false;
+        isIntroActive = false;
     }
 }

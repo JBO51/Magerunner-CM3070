@@ -7,7 +7,7 @@ public class FrameRateCap : MonoBehaviour
 
     void Awake()
     {
-        // Tells Unity to target a specific frame rate
+        //Tells Unity to target a specific frame rate
         Application.targetFrameRate = maxFrameRate;
     }
 }
