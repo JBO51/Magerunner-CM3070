@@ -15,12 +15,8 @@ public class LevelTimer : MonoBehaviour
         if (isTimerRunning)
         {
             elapsedTime += Time.deltaTime;
-            //calculate minutes seconds millisecondss
-            int minutes = Mathf.FloorToInt(elapsedTime / 60f);
-            int seconds = Mathf.FloorToInt(elapsedTime % 60f);
-            int hundredths = Mathf.FloorToInt((elapsedTime * 100f) % 100f);
             //Format to 00:00.00
-            timerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, hundredths);
+            timerText.text = FormatTime(elapsedTime);
         }
     }
 
@@ -33,11 +29,20 @@ public class LevelTimer : MonoBehaviour
     public void StopTimer()
     {
         isTimerRunning = false;
+        timerText.text = "";
     }
 
     //grab the final time
     public float GetFinalTime()
     {
         return elapsedTime;
+    }
+
+    private string FormatTime(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60f);
+        int hundredths = Mathf.FloorToInt((time * 100f) % 100f);
+        return string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, hundredths);
     }
 }

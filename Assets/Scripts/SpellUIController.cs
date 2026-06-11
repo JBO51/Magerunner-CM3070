@@ -8,13 +8,14 @@ using TMPro;
 
 public class SpellUIController : MonoBehaviour
 {
-    //UI image component + text
-    [Header("UI Graphic Target")]
+    //UI image component + text + playerinventory
+    [Header("References")]
     public Image cardDisplayImage;
     public TextMeshProUGUI cardNameText;
     public TextMeshProUGUI clickHintText;
     public TextMeshProUGUI cyclePromptTextQ;
     public TextMeshProUGUI cyclePromptTextE;
+    public PlayerSpellInventory playerInventory;
 
 
     //Colors for diff spells
@@ -24,15 +25,10 @@ public class SpellUIController : MonoBehaviour
     public Color bluePullColor;
     public Color greenStasisColor;
 
-    //Create private version of playerinventory
-    private PlayerSpellInventory playerInventory;
     private string clickHint = "Left Click to Cast";
 
     void Start()
     {
-        //Find the player inventory component in scene execution and bind to
-        //the private playerInventory
-        playerInventory = Object.FindFirstObjectByType<PlayerSpellInventory>();
         playerInventory.OnSpellChanged += UpdateUI;
 
         //Execute initially to style the card as empty startup

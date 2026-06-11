@@ -17,7 +17,8 @@ public class LevelIntroPan : MonoBehaviour
     //Intro camera starting point
     public Transform introStartPoint;  
     //Player camera starting point
-    public Transform playerCameraPosition; 
+    public Transform playerCameraPosition;
+    public LevelTimer timer;
 
     [Header("Disable player controls")]
     //Disable the movement + mouselook scripts
@@ -117,7 +118,6 @@ public class LevelIntroPan : MonoBehaviour
         spellCastingScript.enabled = true;
 
         //Start timer   
-        LevelTimer timer = Object.FindFirstObjectByType<LevelTimer>();
         timer.StartTimer();
     }
 

@@ -24,6 +24,7 @@ public class StasisObject : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
 
         //Freeze constraints so it freezes completely
+        rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
 
         //StartCoroutine function to wait 3 seconds before
@@ -34,6 +35,9 @@ public class StasisObject : MonoBehaviour
     //Function to add force from spells while objecty is frozen
     public void AddStoredForce(Vector3 force)
     {
+        //add three times to actually make it worth it
+        accumulatedForces += force;
+        accumulatedForces += force;
         accumulatedForces += force;
     }
 
@@ -43,6 +47,8 @@ public class StasisObject : MonoBehaviour
         yield return new WaitForSeconds(stasisDuration);
 
         //Restore original constraints
+        rb.isKinematic = false;
+        rb.useGravity = true;
         rb.constraints = originalConstraints;
 
         //wake up the physics body so it registers the physics update

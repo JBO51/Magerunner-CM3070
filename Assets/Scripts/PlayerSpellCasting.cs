@@ -6,10 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpellCasting : MonoBehaviour
 {
-    [Header("Main Camera Reference")]
+    [Header("References")]
     public Camera playerCamera;
-
-    private PlayerSpellInventory inventory;
+    public PlayerSpellInventory inventory;
 
     [Header("Red Push Settings")]
     public float pushRange = 25f;
@@ -24,12 +23,6 @@ public class PlayerSpellCasting : MonoBehaviour
     [Header("Green Stasis Settings")]
     public float stasisRange = 25f;
     public float stasisRadius = 1.5f;
-
-    void Start()
-    {
-        //hook to inventory script 
-        inventory = GetComponent<PlayerSpellInventory>();
-    }
 
     //Check for mouse input in update
     void Update()
@@ -84,7 +77,7 @@ public class PlayerSpellCasting : MonoBehaviour
             if (hit.collider.TryGetComponent<Rigidbody>(out Rigidbody targetRb))
             {
                 //check if isKinematic (for objects that can only be moved by spells)
-                if (targetRb.isKinematic)
+                if (targetRb.isKinematic && !hit.collider.TryGetComponent<StasisObject>(out StasisObject stasisCheck))
                 {
                     targetRb.isKinematic = false;
                 }
@@ -128,7 +121,7 @@ public class PlayerSpellCasting : MonoBehaviour
             if (hit.collider.TryGetComponent<Rigidbody>(out Rigidbody targetRb))
             {
                 //check if isKinematic (for objects that can only be moved by spells)
-                if (targetRb.isKinematic)
+                if (targetRb.isKinematic && !hit.collider.TryGetComponent<StasisObject>(out StasisObject stasisCheck))
                 {
                     targetRb.isKinematic = false;
                 }

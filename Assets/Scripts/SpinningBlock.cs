@@ -16,7 +16,10 @@ public class SpinningBlock : MonoBehaviour
 
     void FixedUpdate()
     {
-        float radiansPerSecond = spinSpeed * Mathf.Deg2Rad;
-        rb.angularVelocity = new Vector3(0f, radiansPerSecond, 0f);
+        if (rb.isKinematic == false)
+        {
+            float radiansPerSecond = spinSpeed * Mathf.Deg2Rad;
+            rb.angularVelocity = new Vector3(0f, radiansPerSecond, 0f);
+        }
     }
 }

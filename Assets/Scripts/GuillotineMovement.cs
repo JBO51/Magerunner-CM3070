@@ -29,41 +29,44 @@ public class GuillotineMovement : MonoBehaviour
         float topY = startPosition.y;
         float bottomY = startPosition.y - moveRange;
 
-        switch (state)
+        if (rb.isKinematic == false)
         {
-            //Pausing
-            case 0:
-                //Set velocity to 0
-                rb.linearVelocity = Vector3.zero;
-                stateTimer += Time.fixedDeltaTime;
-                //Once the duration of the pause is over, move state
-                if (stateTimer >= pauseDuration)
-                {
-                    state = 1;
-                    stateTimer = 0f;
-                }
-                break;
-            //Slicing
-            case 1:
-                //Set downwards velocity
-                rb.linearVelocity = new Vector3(0f, -sliceSpeed, 0f);
-                //Once it caps out at the bottom, move to retraction
-                if (transform.position.y <= bottomY)
-                {
-                    state = 2;
-                }
-                break;
-            //Retracting
-            case 2:
-                //Set velocity to go up in retract speed
-                rb.linearVelocity = new Vector3(0f, retractSpeed, 0f);
-                //If it reaches the top, stop, store the pos then begin the process again
-                if (transform.position.y >= topY)
-                {
-                    transform.position = new Vector3(transform.position.x, topY, transform.position.z);
-                    state = 0;
-                }
-                break;
+            switch (state)
+            {
+                //Pausing
+                case 0:
+                    //Set velocity to 0
+                    rb.linearVelocity = Vector3.zero;
+                    stateTimer += Time.fixedDeltaTime;
+                    //Once the duration of the pause is over, move state
+                    if (stateTimer >= pauseDuration)
+                    {
+                        state = 1;
+                        stateTimer = 0f;
+                    }
+                    break;
+                //Slicing
+                case 1:
+                    //Set downwards velocity
+                    rb.linearVelocity = new Vector3(0f, -sliceSpeed, 0f);
+                    //Once it caps out at the bottom, move to retraction
+                    if (transform.position.y <= bottomY)
+                    {
+                        state = 2;
+                    }
+                    break;
+                //Retracting
+                case 2:
+                    //Set velocity to go up in retract speed
+                    rb.linearVelocity = new Vector3(0f, retractSpeed, 0f);
+                    //If it reaches the top, stop, store the pos then begin the process again
+                    if (transform.position.y >= topY)
+                    {
+                        transform.position = new Vector3(transform.position.x, topY, transform.position.z);
+                        state = 0;
+                    }
+                    break;
+            }
         }
     }
 }

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 public class PlayerSpellInventory : MonoBehaviour
 {
     [Header("Inventory Settings")]
-    [Tooltip("List of currently held spells collected by the player.")]
     //Dynamic list of spells that holds all the spells the player has collected
     //Uses the items defined in the SpellTypes.cs enumeration to make the list
     //So it can only hold items defined in enum
