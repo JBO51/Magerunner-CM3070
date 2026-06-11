@@ -60,8 +60,6 @@ public class PlayerSpellCasting : MonoBehaviour
 
     private void RedPush()
     {
-        ////NEED TO FIX COLLISION DETECTION THROUGH WALLS
-
         //create a ray extending forward from the cdenter of the viewport
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         //array to collect all hits on objects along the ray path
@@ -104,8 +102,6 @@ public class PlayerSpellCasting : MonoBehaviour
 
     private void BluePull()
     {
-        ////NEED TO FIX COLLISION DETECTION THROUGH WALLS
-
         //create a ray extending forward from the cdenter of the viewport
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         //array to collect all hits on objects along the ray path
@@ -147,7 +143,7 @@ public class PlayerSpellCasting : MonoBehaviour
     }
     private void GreenStasis()
     {
-        //Just 1 object so we can do raycast hit instead of speherecast
+        //Same concept as push/pull
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 

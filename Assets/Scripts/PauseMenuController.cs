@@ -12,6 +12,7 @@ public class PauseMenuController : MonoBehaviour
     public MonoBehaviour playerMovement;
     public MonoBehaviour mouseLook;
     public PlayerSpellCasting spellCastingScript;
+    public ResetPlayer resetButton;
 
     private bool isPaused = false;
     
@@ -43,6 +44,7 @@ public class PauseMenuController : MonoBehaviour
         playerMovement.enabled = false;
         mouseLook.enabled = false;
         spellCastingScript.enabled = false;
+        resetButton.enabled = false;
 
         //Unlock the mouse so the player can select buttons
         Cursor.lockState = CursorLockMode.None;
@@ -61,11 +63,13 @@ public class PauseMenuController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        //make sure to not enable controls while in panning
         if (!LevelIntroPan.IsIntroActive)
         {
             playerMovement.enabled = true;
             mouseLook.enabled = true;
             spellCastingScript.enabled = true;
+            resetButton.enabled = true;
         }
     }
 

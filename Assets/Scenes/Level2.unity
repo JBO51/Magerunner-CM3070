@@ -716,7 +716,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1830, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -3188,6 +3188,7 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
+  resetButton: {fileID: 619946085}
   panDuration: 3
   holdDuration: 3
   holdDriftDistance: 8
@@ -11606,7 +11607,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799164991}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11621,8 +11622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 30.254639, y: -16.499756}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &799164993
 MonoBehaviour:
@@ -11641,12 +11642,13 @@ MonoBehaviour:
   bestTimeText: {fileID: 973909571}
   medalText: {fileID: 2093030153}
   nextLevelButton: {fileID: 1408220233}
-  diamondThreshold: 25
+  diamondThreshold: 35
   goldThreshold: 40
-  silverThreshold: 55
+  silverThreshold: 50
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
+  resetButton: {fileID: 619946085}
 --- !u!114 &799164994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53635,6 +53637,7 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
+  resetButton: {fileID: 619946085}
 --- !u!1 &2008298636
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class LevelIntroPan : MonoBehaviour
     public MonoBehaviour playerMovement; 
     public MonoBehaviour mouseLook;
     public PlayerSpellCasting spellCastingScript;
+    public ResetPlayer resetButton;
 
     [Header("Duration")]
     //How long the intro takes
@@ -55,6 +56,7 @@ public class LevelIntroPan : MonoBehaviour
         playerMovement.enabled = false;
         mouseLook.enabled = false;
         spellCastingScript.enabled = false;
+        resetButton.enabled = false;
 
         //Put camera in starting position
         transform.position = introStartPoint.position;
@@ -116,9 +118,11 @@ public class LevelIntroPan : MonoBehaviour
         playerMovement.enabled = true;
         mouseLook.enabled = true;
         spellCastingScript.enabled = true;
+        resetButton.enabled = true;
 
-        //Start timer   
-        timer.StartTimer();
+
+    //Start timer   
+    timer.StartTimer();
     }
 
     //For resetting the intro play when you leave to main menu

@@ -323,9 +323,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1830, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0.485
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2262,7 +2262,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250093522}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2277,8 +2277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 30.254639, y: -16.499756}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250093524
 MonoBehaviour:
@@ -2335,12 +2335,13 @@ MonoBehaviour:
   bestTimeText: {fileID: 1587283307}
   medalText: {fileID: 425867493}
   nextLevelButton: {fileID: 197388014}
-  diamondThreshold: 25
-  goldThreshold: 40
-  silverThreshold: 55
+  diamondThreshold: 30
+  goldThreshold: 35
+  silverThreshold: 45
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
+  resetButton: {fileID: 619946085}
 --- !u!1 &261525434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,8 +3349,9 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
-  panDuration: 0
-  holdDuration: 0
+  resetButton: {fileID: 619946085}
+  panDuration: 3
+  holdDuration: 3
   holdDriftDistance: 8
 --- !u!1 &339531160
 GameObject:
@@ -12372,6 +12374,7 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
+  resetButton: {fileID: 619946085}
 --- !u!1 &778216444
 GameObject:
   m_ObjectHideFlags: 0
@@ -41002,7 +41005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.91, y: 0.27}
   m_AnchorMax: {x: 0.91, y: 0.27}
-  m_AnchoredPosition: {x: 3.710083, y: -35.5}
+  m_AnchoredPosition: {x: 3.710205, y: -35.5}
   m_SizeDelta: {x: 283.1, y: 458.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1682033878
