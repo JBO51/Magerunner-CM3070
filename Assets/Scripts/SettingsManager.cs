@@ -53,6 +53,12 @@ public class SettingsManager : MonoBehaviour
             if (cam != null) cam.fieldOfView = value;
         }
     }
+    
+    public void ClearSavedData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
 
     //Close settings view in menu
     public void CloseSettings()
