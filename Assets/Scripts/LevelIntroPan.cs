@@ -1,5 +1,6 @@
 //Script for the initial camera pan from the goal to the player
 //Has to start at an intro point, drift backwards, then pan back to player
+//Attached to Main Camera under Player object in Level 1 and 2 scene
 using UnityEngine;
 using System.Collections;
 

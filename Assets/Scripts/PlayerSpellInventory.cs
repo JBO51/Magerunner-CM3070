@@ -1,5 +1,5 @@
 //Script for managing player spell inventory, picking up spells and cycling through spells
-
+//Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem;
 //Gets the C# list functionality

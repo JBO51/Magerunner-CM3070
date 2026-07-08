@@ -35,10 +35,8 @@ public class StasisObject : MonoBehaviour
     //Function to add force from spells while objecty is frozen
     public void AddStoredForce(Vector3 force)
     {
-        //add three times to actually make it worth it
-        accumulatedForces += force;
-        accumulatedForces += force;
-        accumulatedForces += force;
+        //multiply by three to make the impact stronger
+        accumulatedForces += force * 3;
     }
 
     private IEnumerator StasisTimer()

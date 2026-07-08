@@ -1,5 +1,5 @@
 //Script for spinning blocks
-//Used in Level 1
+//Attached to Spinning Platform under Bridge, Level Design in Level 1 scene
 using UnityEngine;
 
 public class SpinningBlock : MonoBehaviour

@@ -1,5 +1,7 @@
 //Script for changing settings (Sensitivity + FOV)
 //Seperate script so that it can be used in both Menu + Pause menu
+//Attached to SettingsPanel under PauseUIManager, Player UI in Level 1 + 2 scenes
+//Attached to SettingsPanel under MenuUI in Main Menu scene
 using UnityEngine;
 using UnityEngine.UI;
 

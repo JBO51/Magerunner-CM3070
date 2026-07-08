@@ -1,6 +1,7 @@
 //Script to manage the player casting and spell functionality
 //Includes checking for mouse input, spell validation and 
 //actual physics implementation (except Stasis spell, included in Stasis Object)
+//Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem; 
 

@@ -1,5 +1,6 @@
 //Script for managing the victory screen when finishing a level
 //as well as the best times saved in playerPrefs
+//Attached to Player UI -> VictoryPanel in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;

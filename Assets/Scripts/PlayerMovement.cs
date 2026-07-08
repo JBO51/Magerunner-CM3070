@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 //This script is a rigidbody based movement mechanism, to support realistic physics simulation
 //Non-kinematic system, unlike Neon White
-
+//Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 public class PlayerMovement : MonoBehaviour
 {
     //Basic movement adjustments like movement speed and jump force

@@ -1,4 +1,5 @@
 //UI Manager for the pause menu while in a level
+//Attached to PauseUIManager in Player UI object (Level 1 and 2)
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
@@ -77,7 +78,7 @@ public class PauseMenuController : MonoBehaviour
     {
         //First resume time (buggy if you dont)
         Time.timeScale = 1f;
-        //Reload current scene (fetching all the way to ResetPlayer.cs is redundant)
+        //Reload current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

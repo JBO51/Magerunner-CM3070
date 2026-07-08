@@ -1,5 +1,6 @@
-//Script for the guillotine movement in Level 2
+//Script for the guillotine movement
 //Works by cycling state of Pause, SLice and Retract
+//Attached to Level Design -> Platform3 in Level 2
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]

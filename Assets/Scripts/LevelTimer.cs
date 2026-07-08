@@ -1,4 +1,5 @@
 //Script for the timer at the top of the hud
+//Attached to Timer object under Player UI in Level 1 + 2 Scene
 using UnityEngine;
 using TMPro;
 

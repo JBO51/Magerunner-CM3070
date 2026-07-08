@@ -1,4 +1,5 @@
 //Adapted from guide: https://www.youtube.com/watch?v=f473C43s8nE
+//Attached to Main Camera under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem; //Modern input hardware
 

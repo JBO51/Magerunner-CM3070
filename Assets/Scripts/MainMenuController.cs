@@ -1,4 +1,5 @@
 //UI controller for the main menu
+//Attached to MenuManager in MainMenu scene
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

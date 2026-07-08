@@ -1,7 +1,6 @@
 ﻿//Listener script for hooking into the playerinventory System.Action broadcast.
 //For now just changes UI image box color to match spell type
-//Later will be a proper mage book asset
-
+//Attached to SpellsUIManager under Player UI in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; 
@@ -33,12 +32,6 @@ public class SpellUIController : MonoBehaviour
 
         //Execute initially to style the card as empty startup
         UpdateUI();
-    }
-
-    void OnDestroy()
-    {
-        //cleanup event links when scenes change to prevent errors
-        playerInventory.OnSpellChanged -= UpdateUI;
     }
 
     private void UpdateUI()

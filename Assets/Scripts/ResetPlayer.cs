@@ -1,5 +1,6 @@
 //Script for resetting the player on environmental hazard collision, 
 //or when player presses T
+//Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;

@@ -3480,7 +3480,7 @@ GameObject:
   - component: {fileID: 345871915}
   - component: {fileID: 345871919}
   m_Layer: 3
-  m_Name: Cube
+  m_Name: Spinning Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12335,7 +12335,7 @@ GameObject:
   - component: {fileID: 754683693}
   - component: {fileID: 754683695}
   m_Layer: 0
-  m_Name: Pause_UI_Manager
+  m_Name: PauseUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

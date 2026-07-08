@@ -1,4 +1,6 @@
 //Script for the finish point functionality in levels
+//Attached to Level Design -> Tower3 -> FinishPoint in Level 1
+//Attached to Level Design -> Platform4 -> FinishPoint in Level 2
 using UnityEngine;
 
 public class FinishPoint : MonoBehaviour

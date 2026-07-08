@@ -50205,6 +50205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2107512785}
   - {fileID: 1879005937}
   - {fileID: 66861717}
   - {fileID: 853454559}
@@ -53598,7 +53599,7 @@ GameObject:
   - component: {fileID: 2001305191}
   - component: {fileID: 2001305192}
   m_Layer: 0
-  m_Name: Pause_UI_Manager
+  m_Name: PauseUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55528,7 +55529,6 @@ Transform:
   m_Children:
   - {fileID: 1257537861}
   - {fileID: 743729907}
-  - {fileID: 2107512785}
   - {fileID: 1833458810}
   - {fileID: 1151461722}
   - {fileID: 797375724}
@@ -56012,11 +56012,11 @@ Transform:
   m_GameObject: {fileID: 2107512784}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.53, y: 50.83364, z: -75}
+  m_LocalPosition: {x: 16.921265, y: 45.33364, z: -75}
   m_LocalScale: {x: 1, y: 67.87734, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2064739736}
+  m_Father: {fileID: 1753688138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2107512786
 MonoBehaviour:
