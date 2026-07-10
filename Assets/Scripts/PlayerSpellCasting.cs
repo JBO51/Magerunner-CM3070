@@ -1,6 +1,7 @@
 //Script to manage the player casting and spell functionality
 //Includes checking for mouse input, spell validation and 
 //actual physics implementation (except Stasis spell, included in Stasis Object)
+//Also includes instantiation of Spell Animations
 //Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem; 
@@ -10,6 +11,12 @@ public class PlayerSpellCasting : MonoBehaviour
     [Header("References")]
     public Camera playerCamera;
     public PlayerSpellInventory inventory;
+
+    [Header("Visual Effects")]
+    public GameObject redPushVFX;
+    public GameObject bluePullVFX;
+    public GameObject greenStasisVFX;
+    public Transform castPosition;
 
     [Header("Red Push Settings")]
     public float pushRange = 25f;
@@ -96,7 +103,8 @@ public class PlayerSpellCasting : MonoBehaviour
                 }
             }
         }
-
+        //Play red push animation (Red particles out)
+        PlaySpellEffect(redPushVFX);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
     }
@@ -138,7 +146,8 @@ public class PlayerSpellCasting : MonoBehaviour
                 }
             }
         }
-
+        //Play blue pull animation (Blue particles in)
+        PlaySpellEffect(bluePullVFX);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
     }
@@ -164,8 +173,18 @@ public class PlayerSpellCasting : MonoBehaviour
                 }
             }
         }
-
+        //Play green stasis animation (Green particles still)
+        PlaySpellEffect(greenStasisVFX);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
+    }
+
+    //Function to spawn in the animation effect when casting a spell
+    //Takes the animation prefab as an argument
+    private void PlaySpellEffect(GameObject animationPrefab)
+    {
+        //Instantiate the animation at the current castPosition/Rotation, then destroy after it plays 1 animation
+        GameObject animationInstance = Instantiate(animationPrefab, castPosition.position, castPosition.rotation);
+        Destroy(animationInstance, 0.7f);
     }
 }

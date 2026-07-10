@@ -63,7 +63,7 @@ public class PlayerSpellInventory : MonoBehaviour
         //check what the next spell is
         int nextIndex = currentSpellIndex + direction;
 
-        //if its out of bounds, then return (just in case)
+        //if its out of bounds, then return
         if (nextIndex < 0 || nextIndex >= collectedSpells.Count) return;
 
         //update current spell based on direction

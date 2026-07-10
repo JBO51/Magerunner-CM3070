@@ -28,6 +28,7 @@ public class VictoryMenuController : MonoBehaviour
     public MonoBehaviour mouseLook;
     public PlayerSpellCasting spellCastingScript;
     public ResetPlayer resetButton;
+    public PauseMenuController pauseMenu;
 
     public void DisplayVictoryScreen(float finalTime)
     {
@@ -42,6 +43,7 @@ public class VictoryMenuController : MonoBehaviour
         mouseLook.enabled = false;
         spellCastingScript.enabled = false;
         resetButton.enabled = false;
+        pauseMenu.enabled = false;
 
         //Unlock the mouse so the player can select buttons
         Cursor.lockState = CursorLockMode.None;

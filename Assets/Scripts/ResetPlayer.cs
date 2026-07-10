@@ -1,5 +1,5 @@
 //Script for resetting the player on environmental hazard collision, 
-//or when player presses T
+//or when player presses R
 //Attached to Player Hitbox under Player object in Level 1 + 2 Scene
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,8 +15,8 @@ public class ResetPlayer : MonoBehaviour
 
     void Update()
     {
-        //Check for the 'T' key press
-        if (Keyboard.current.tKey.wasPressedThisFrame)
+        //Check for the 'R' key press
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             ResetLevel();
         }
