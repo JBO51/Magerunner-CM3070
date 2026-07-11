@@ -60,6 +60,14 @@ public class SettingsManager : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
+
+        //Check if the scene is the main menu
+        MainMenuController mainMenu = Object.FindFirstObjectByType<MainMenuController>();
+        //if so, then we update the best times so that its instantly changed
+        if (mainMenu != null)
+        {
+            mainMenu.UpdateBestTimes();
+        }
     }
 
     //Close settings view in menu
