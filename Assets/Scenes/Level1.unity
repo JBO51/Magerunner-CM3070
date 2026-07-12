@@ -2341,7 +2341,6 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
-  resetButton: {fileID: 619946085}
   pauseMenu: {fileID: 754683695}
 --- !u!1 &261525434
 GameObject:

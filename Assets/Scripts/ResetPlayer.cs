@@ -33,6 +33,8 @@ public class ResetPlayer : MonoBehaviour
 
     public void ResetLevel()
     {
+        //Time scale 1f for if they reset from the victory menu
+        Time.timeScale = 1f;
         //reload scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

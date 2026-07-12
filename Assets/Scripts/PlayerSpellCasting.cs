@@ -104,7 +104,7 @@ public class PlayerSpellCasting : MonoBehaviour
             }
         }
         //Play red push animation (Red particles out)
-        PlaySpellEffect(redPushVFX);
+        PlaySpellEffect(redPushVFX, 0.7f);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
     }
@@ -147,7 +147,7 @@ public class PlayerSpellCasting : MonoBehaviour
             }
         }
         //Play blue pull animation (Blue particles in)
-        PlaySpellEffect(bluePullVFX);
+        PlaySpellEffect(bluePullVFX, 0.7f);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
     }
@@ -174,17 +174,17 @@ public class PlayerSpellCasting : MonoBehaviour
             }
         }
         //Play green stasis animation (Green particles still)
-        PlaySpellEffect(greenStasisVFX);
+        PlaySpellEffect(greenStasisVFX, 2.9f);
         //Remove spell from inventory
         inventory.ConsumeEquippedSpell();
     }
 
     //Function to spawn in the animation effect when casting a spell
     //Takes the animation prefab as an argument
-    private void PlaySpellEffect(GameObject animationPrefab)
+    private void PlaySpellEffect(GameObject animationPrefab, float animationTime)
     {
         //Instantiate the animation at the current castPosition/Rotation, then destroy after it plays 1 animation
         GameObject animationInstance = Instantiate(animationPrefab, castPosition.position, castPosition.rotation);
-        Destroy(animationInstance, 0.7f);
+        Destroy(animationInstance, animationTime);
     }
 }

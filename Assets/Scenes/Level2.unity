@@ -11799,7 +11799,6 @@ MonoBehaviour:
   playerMovement: {fileID: 619946081}
   mouseLook: {fileID: 330585548}
   spellCastingScript: {fileID: 619946083}
-  resetButton: {fileID: 619946085}
   pauseMenu: {fileID: 2001305192}
 --- !u!114 &799164994
 MonoBehaviour:
@@ -55438,7 +55437,7 @@ Transform:
   m_GameObject: {fileID: 2054638796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17, y: 19, z: -103.996}
+  m_LocalPosition: {x: 17, y: 19, z: -96.94}
   m_LocalScale: {x: 1, y: 1, z: 0.17}
   m_ConstrainProportionsScale: 0
   m_Children: []
