@@ -40,9 +40,11 @@ public class SpellPagePickup : MonoBehaviour
         //can do it by checking if object touching the pickup has inventory system
         if (obj.TryGetComponent<PlayerSpellInventory>(out PlayerSpellInventory playerInventory))
         {
-            //Transfer the spell to the player with PlayerSpellInventory.cs function
-            playerInventory.AddSpell(spellToGrant);
-
+            if(spellToGrant != SpellType.None)
+            {
+                //Transfer the spell to the player with PlayerSpellInventory.cs function
+                playerInventory.AddSpell(spellToGrant);
+            }
             //Destroy the page pickup object from the scene
             Destroy(gameObject);
         }
