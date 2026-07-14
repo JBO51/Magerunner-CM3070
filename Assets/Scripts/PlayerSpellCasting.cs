@@ -47,22 +47,21 @@ public class PlayerSpellCasting : MonoBehaviour
     {
         //Fetch what current spell is 
         SpellType activeSpell = inventory.EquippedSpell;
-
-        //If nothing is equipped, return
-        if (activeSpell == SpellType.None) return;
-
         //Check which spell type current spell is
-        if (activeSpell == SpellType.RedPush)
+        switch (activeSpell)
         {
-            RedPush();
-        } 
-        else if (activeSpell == SpellType.BluePull)
-        {
-            BluePull();
-        }
-        else if (activeSpell == SpellType.GreenStasis)
-        {
-            GreenStasis();
+            case SpellType.RedPush:
+                RedPush();
+                break;
+            case SpellType.BluePull:
+                BluePull();
+                break;
+            case SpellType.GreenStasis:
+                GreenStasis();
+                break;
+            //If nothing is equipped, return
+            case SpellType.None:
+                return;
         }
     }
 
