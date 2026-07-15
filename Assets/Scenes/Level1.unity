@@ -2823,7 +2823,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268640886}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12879,7 +12879,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694595914}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -35519,7 +35519,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922546006}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -40277,7 +40277,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227332295}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -41184,7 +41184,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321396213}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -41763,7 +41763,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440192083}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -46009,7 +46009,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836457763}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -46684,7 +46684,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963616894}
   serializedVersion: 5
-  m_Mass: 5
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
