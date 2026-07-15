@@ -73,3 +73,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#Baked Lighting
+/[Aa]ssets/**/LightingData.asset
+/[Aa]ssets/**/LightingData.asset.meta
+/[Aa]ssets/**/Lightmap-*.exr
+/[Aa]ssets/**/Lightmap-*.exr.meta
+/[Aa]ssets/**/ReflectionProbe-*.exr
+/[Aa]ssets/**/ReflectionProbe-*.exr.meta
+/[Aa]ssets/**/Lightmap-*.png
+/[Aa]ssets/**/Lightmap-*.png.meta
