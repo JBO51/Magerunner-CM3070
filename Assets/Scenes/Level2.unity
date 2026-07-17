@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5b47bfd44cee6194caa084bd47bf80f9, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -8217,7 +8217,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.82
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -43545,7 +43545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450452, guid: 5081fa4ee7ae4fd47b77c904b7ec80af, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.081264
+      value: 13.037328
       objectReference: {fileID: 0}
     - target: {fileID: 450452, guid: 5081fa4ee7ae4fd47b77c904b7ec80af, type: 3}
       propertyPath: m_LocalPosition.y
@@ -43553,7 +43553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450452, guid: 5081fa4ee7ae4fd47b77c904b7ec80af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -68.13
+      value: -68.3
       objectReference: {fileID: 0}
     - target: {fileID: 450452, guid: 5081fa4ee7ae4fd47b77c904b7ec80af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -81364,7 +81364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 478482, guid: c546d472c763cdb4a8cfbb105bf97a2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.660001
+      value: -4.82
       objectReference: {fileID: 0}
     - target: {fileID: 478482, guid: c546d472c763cdb4a8cfbb105bf97a2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -85361,7 +85361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458024, guid: d2522dcf0fb8d6b4aa4ddd10c405746a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2534287
+      value: 1.226104
       objectReference: {fileID: 0}
     - target: {fileID: 458024, guid: d2522dcf0fb8d6b4aa4ddd10c405746a, type: 3}
       propertyPath: m_LocalScale.y
@@ -86209,7 +86209,7 @@ Transform:
   m_GameObject: {fileID: 1414509564}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -58.37, y: 0, z: -80.82}
+  m_LocalPosition: {x: -58.186, y: 0, z: -80.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
