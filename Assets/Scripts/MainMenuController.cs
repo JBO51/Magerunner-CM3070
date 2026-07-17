@@ -10,6 +10,9 @@ public class MainMenuController : MonoBehaviour
     public TextMeshProUGUI level1BestTimeText;
     public TextMeshProUGUI level2BestTimeText;
 
+    [Header("BGM Reference")]
+    public AudioSource mainMenuBGM;
+
     void Start()
     {
         //Re-enable and unlock the hardware mouse cursor 
@@ -19,6 +22,10 @@ public class MainMenuController : MonoBehaviour
 
         //reupdate the best times upon loading the main menu
         UpdateBestTimes();
+
+        //reupdate the BGM volume for the case when volume was
+        //changed in a level
+        mainMenuBGM.volume = PlayerPrefs.GetFloat("Volume", 0.5f);
     }
 
     //Call load level 1 for start button too
