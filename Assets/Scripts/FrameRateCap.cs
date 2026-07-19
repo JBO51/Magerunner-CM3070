@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FrameRateCap : MonoBehaviour
 {
-    [SerializeField] private int maxFrameRate = 240;
+    [SerializeField] private int maxFrameRate = 144;
 
     void Awake()
     {

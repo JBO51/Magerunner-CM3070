@@ -5929,7 +5929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eaae0baf97eae479712c834f4fc935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrameRateCap
-  maxFrameRate: 240
+  maxFrameRate: 90
 --- !u!4 &1907294641
 Transform:
   m_ObjectHideFlags: 0
